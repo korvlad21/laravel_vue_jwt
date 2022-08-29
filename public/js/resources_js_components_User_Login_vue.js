@@ -29,11 +29,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     login: function login() {
+      var _this = this;
+
       axios.post('/api/auth/login', {
         email: this.email,
         password: this.password
       }).then(function (res) {
         localStorage.setItem('access_token', res.data.access_token);
+
+        _this.$router.push({
+          name: 'user.personal'
+        });
       });
     }
   }
