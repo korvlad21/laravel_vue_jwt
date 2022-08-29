@@ -22,6 +22,10 @@
         }
     },
 
+    mounted() {
+        
+    },
+
     methods: {
         store() {
             axios.post('/api/users', {name: this.name,

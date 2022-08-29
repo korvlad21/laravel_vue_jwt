@@ -33,6 +33,7 @@ __webpack_require__.r(__webpack_exports__);
       password_confirmation: null
     };
   },
+  mounted: function mounted() {},
   methods: {
     store: function store() {
       axios.post('/api/users', {
