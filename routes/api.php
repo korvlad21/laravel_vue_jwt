@@ -24,7 +24,7 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
-    Route::group(['middleware' => 'auth:api'], function(){
+    Route::group(['middleware' => 'jwt.auth'], function(){
         Route::group(['namespace' => 'Fruit', 'prefix' => 'fruits'], function() {
             Route::get('/', 'IndexController');
         });
