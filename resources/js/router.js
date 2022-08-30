@@ -14,7 +14,7 @@ const route = new VueRouter({
             name: 'user.login'
         },
         {
-            path: '/users/registraion', component: () => import('./components/User/Registration'),
+            path: '/users/registration', component: () => import('./components/User/Registration'),
             name: 'user.registration'
         },
         {
@@ -41,7 +41,7 @@ route.beforeEach((to, from, next) => {
             })
         }
     }
-    if (to.name === 'user.login' && accessToken) {
+    if (to.name === 'user.login' || to.name === 'user.registration' && accessToken) {
         return next({
             name: 'user.personal'
         })

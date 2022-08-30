@@ -14,9 +14,10 @@ class StoreController extends Controller
     {
         $data = $request->validated();
         $data['password'] = Hash::make($data['password']);
-        User::firstOrCreate([
-            'email' => $data['email']
-        ], $data);
-        return response([]);
+        $user = User::where('email', $data['email'])->first();
+        if ($user) return response(['error' => 'User with thos email already exists'], 403);
+        $user = User::create($data);
+        $token = auth()->tokenById($user->id);
+        return response(['access_token' => $token]);
     }
 }
